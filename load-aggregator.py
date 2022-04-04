@@ -18,12 +18,16 @@ for f in files:
     dfs.append(pd.read_csv(folder_path + '/' + f))
 
 # Use concat to concat the datasets, grouping by DATE column.
-average_df = pd.concat(dfs).groupby('DATE').mean()
+combined_df = pd.concat(dfs)
 
-# Round values.
-average_df = average_df.round()
+
+combined_df['DATE'] = pd.to_datetime(combined_df['DATE'])
+combined_df.index = combined_df['DATE']
+combined_df = combined_df.resample('H').mean()
+
+
 
 # Write out weather.csv out in Processed folder.
-average_df.to_csv(folder_path + '/Aggregated/weather.csv')
+combined_df.to_csv(folder_path + '/Aggregated/load.csv')
 
 # TODO: Convert to weighted average using weights provided by PJM.
