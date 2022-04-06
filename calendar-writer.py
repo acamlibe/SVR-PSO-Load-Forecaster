@@ -49,31 +49,31 @@ while index <= end_date:
     wd = index.weekday()
     wm = index.month
 
-    is_monday = wd == 0
-    is_tuesday = wd == 1
-    is_wednesday = wd == 2
-    is_thursday = wd == 3
-    is_friday = wd == 4
-    is_saturday = wd == 5
-    is_sunday = wd == 6
+    is_monday = 1 if wd == 0 else 0
+    is_tuesday = 1 if wd == 1 else 0
+    is_wednesday = 1 if wd == 2 else 0
+    is_thursday = 1 if wd == 3 else 0
+    is_friday = 1 if wd == 4 else 0
+    is_saturday = 1 if wd == 5 else 0
+    is_sunday = 1 if wd == 6 else 0
 
-    is_january = wm == 1
-    is_february = wm == 2
-    is_march = wm == 3
-    is_april = wm == 4
-    is_may = wm == 5
-    is_june = wm == 6
-    is_july = wm == 7
-    is_august = wm == 8
-    is_september = wm == 9
-    is_october = wm == 10
-    is_november = wm == 11
-    is_december = wm == 12
+    is_january = 1 if wm == 1 else 0
+    is_february = 1 if wm == 2 else 0
+    is_march = 1 if wm == 3 else 0
+    is_april = 1 if wm == 4 else 0
+    is_may = 1 if wm == 5 else 0
+    is_june = 1 if wm == 6 else 0
+    is_july = 1 if wm == 7 else 0
+    is_august = 1 if wm == 8 else 0
+    is_september = 1 if wm == 9 else 0
+    is_october = 1 if wm == 10 else 0
+    is_november = 1 if wm == 11 else 0
+    is_december = 1 if wm == 12 else 0
 
-    is_prevday_holiday = index + timedelta(days=-1) in us_holidays
-    is_currentday_holiday = index in us_holidays
-    is_nextday_holiday = index + timedelta(days=1) in us_holidays
-    is_dayafternext_holiday = index + timedelta(days=2) in us_holidays
+    is_prevday_holiday = 1 if index + timedelta(days=-1) in us_holidays else 0
+    is_currentday_holiday = 1 if index in us_holidays else 0
+    is_nextday_holiday = 1 if index + timedelta(days=1) in us_holidays else 0
+    is_dayafternext_holiday = 1 if index + timedelta(days=2) in us_holidays else 0
     
     row = pd.DataFrame({
         'DATE': [index],
