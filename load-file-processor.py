@@ -23,6 +23,6 @@ df = df.round()
 df['DATE'] = pd.to_datetime(df['DATE'])
 df.index = df['DATE']
 df = df.resample('H').mean()
-
+df = df.interpolate(method='linear')
 
 df.to_csv(output_path)

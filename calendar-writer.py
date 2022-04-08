@@ -45,7 +45,7 @@ df = pd.DataFrame(columns=['DATE',
 
 
 df['DATE']= pd.to_datetime(df['DATE'])
-while index <= end_date:
+while index < end_date:
     wd = index.weekday()
     wm = index.month
 
