@@ -26,10 +26,10 @@ df = pd.read_csv('Data/DOM/Load Actuals/Processed/Aggregated/load.csv', parse_da
 # df.drop(df.index[mask1 | mask2],inplace=True)
 
 plt.figure(figsize=(10,4))
-plt.plot(df['mw'])
+plt.plot(df['MW'])
 
-start_date_mask = df['date'].dt.date >= datetime.date(2019, 1, 1)
-end_date_mask = df['date'].dt.date < datetime.date(2019, 3, 8)
+start_date_mask = df['DATE'].dt.date >= datetime.date(2019, 1, 1)
+end_date_mask = df['DATE'].dt.date < datetime.date(2019, 3, 8)
 df_subset = df[start_date_mask & end_date_mask]
 
 # df_subset.set_index('date',inplace=True)
@@ -37,10 +37,10 @@ df_subset = df[start_date_mask & end_date_mask]
 def train_test_split(data, n_test):
 	return data[:-n_test], data[-n_test:]
 
-train, test = train_test_split(df_subset['mw'].values, 168)
+train, test = train_test_split(df_subset['MW'].values, 168)
 
 x_axis = np.arange(train.shape[0] + test.shape[0])
-x_dates = df_subset['date'].values
+x_dates = df_subset['DATE'].values
 
 plt.figure(figsize=(10,4))
 plt.plot(x_dates[x_axis[:train.shape[0]]], train, alpha=0.75)
@@ -94,6 +94,10 @@ if __name__ == '__main__':
     executor = Parallel(n_jobs=cpu_count(), backend='multiprocessing')
     tasks = (delayed(score_model)(train, test, cfg) for cfg in cfg_list)
     scores = executor(tasks)      
+
+    scores.sort(key = lambda x: x[1]) # sort score tuples by RMSEs
+
+    print('Best Model: ' + str(scores[0]))
 
 
 
