@@ -22,10 +22,10 @@ def process_windspeed (df):
 # file_path = args[1]
 # output_path = args[2]
 
-file_dir = "C:/Users/Flyin/Desktop/SVR-PSO-Load-Forecaster/Data/DOM/Weather/"
+file_dir = "Data/DOM/Weather/"
 files = ['unprocessed-weather-2010-2019-Norfolk.csv', 'unprocessed-weather-2010-2019-Richmond.csv', 'unprocessed-weather-2010-2019-Washington.csv']
 
-output_dir = "C:/Users/Flyin/Desktop/SVR-PSO-Load-Forecaster/Data/DOM/Weather/Processed/"
+output_dir = "Data/DOM/Weather/Processed/"
 outfiles = ['norfolk', 'richmond', 'washington-dulles']
 
 for i,file in enumerate(files):
