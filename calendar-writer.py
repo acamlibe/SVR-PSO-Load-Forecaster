@@ -48,6 +48,7 @@ df['DATE']= pd.to_datetime(df['DATE'])
 while index < end_date:
     wd = index.weekday()
     wm = index.month
+    he = index.hour + 1
 
     is_monday = 1 if wd == 0 else 0
     is_tuesday = 1 if wd == 1 else 0
@@ -70,6 +71,31 @@ while index < end_date:
     is_november = 1 if wm == 11 else 0
     is_december = 1 if wm == 12 else 0
 
+    is_he1 = 1 if he == 1 else 0
+    is_he2 = 1 if he == 2 else 0
+    is_he3 = 1 if he == 3 else 0
+    is_he4 = 1 if he == 4 else 0
+    is_he5 = 1 if he == 5 else 0
+    is_he6 = 1 if he == 6 else 0
+    is_he7 = 1 if he == 7 else 0
+    is_he8 = 1 if he == 8 else 0
+    is_he9 = 1 if he == 9 else 0
+    is_he10 = 1 if he == 10 else 0
+    is_he11 = 1 if he == 11 else 0
+    is_he12 = 1 if he == 12 else 0
+    is_he13 = 1 if he == 13 else 0
+    is_he14 = 1 if he == 14 else 0
+    is_he15 = 1 if he == 15 else 0
+    is_he16 = 1 if he == 16 else 0
+    is_he17 = 1 if he == 17 else 0
+    is_he18 = 1 if he == 18 else 0
+    is_he19 = 1 if he == 19 else 0
+    is_he20 = 1 if he == 20 else 0
+    is_he21 = 1 if he == 21 else 0
+    is_he22 = 1 if he == 22 else 0
+    is_he23 = 1 if he == 23 else 0
+    is_he24 = 1 if he == 24 else 0
+
     is_prevday_holiday = 1 if index + timedelta(days=-1) in us_holidays else 0
     is_currentday_holiday = 1 if index in us_holidays else 0
     is_nextday_holiday = 1 if index + timedelta(days=1) in us_holidays else 0
@@ -77,6 +103,30 @@ while index < end_date:
     
     row = pd.DataFrame({
         'DATE': [index],
+        'IS_HE1': [is_he1],
+        'IS_HE2': [is_he2],
+        'IS_HE3': [is_he3],
+        'IS_HE4': [is_he4],
+        'IS_HE5': [is_he5],
+        'IS_HE6': [is_he6],
+        'IS_HE7': [is_he7],
+        'IS_HE8': [is_he8],
+        'IS_HE9': [is_he9],
+        'IS_HE10': [is_he10],
+        'IS_HE11': [is_he11],
+        'IS_HE12': [is_he12],
+        'IS_HE13': [is_he13],
+        'IS_HE14': [is_he14],
+        'IS_HE15': [is_he15],
+        'IS_HE16': [is_he16],
+        'IS_HE17': [is_he17],
+        'IS_HE18': [is_he18],
+        'IS_HE19': [is_he19],
+        'IS_HE20': [is_he20],
+        'IS_HE21': [is_he21],
+        'IS_HE22': [is_he22],
+        'IS_HE23': [is_he23],
+        'IS_HE24': [is_he24],
         'IS_MONDAY': [is_monday],
         'IS_TUESDAY': [is_tuesday],
         'IS_WEDNESDAY': [is_wednesday],
